@@ -1,0 +1,6 @@
+---
+# handlers file for database-role-test
+
+- name: restart mysql
+  service: name=mysql state=restarted
+  become: true
