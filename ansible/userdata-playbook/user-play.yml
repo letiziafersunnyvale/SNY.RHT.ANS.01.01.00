@@ -1,0 +1,6 @@
+- name: user
+  hosts: loadbalancer
+  tasks:
+    - name: nome in file
+      userdata: name=Letizia surname=Ferraris
+      become: true

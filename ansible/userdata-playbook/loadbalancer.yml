@@ -1,0 +1,18 @@
+---
+- hosts: loadbalancer
+  tasks:
+   - name: install nginx
+     apt: name=nginx state=present update_cache=true
+     become: true
+   - name: start nginx
+     service: name=nginx state=started enabled=yes
+     become: true
+   - name: activate default nginx site 
+     file: path=/etc/nginx/sites-enabled/default
+     notify: restart nginx
+     become: true
+  handlers:
+   - name: restart nginx
+     service: name=nginx state=restarted
+     become: true
+     
